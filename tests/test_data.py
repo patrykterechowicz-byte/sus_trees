@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from sus_trees.data import load_csv
 
 
@@ -8,3 +10,10 @@ def test_load_csv():
 
     assert table.X == [[False, True, False], [True, False, True], [False, False, False]]
     assert table.Y == [False, False, True]
+
+
+def test_load_csv_file():
+    table = load_csv(path=Path("tests/table.csv"))
+
+    assert table.X == [[False, True, False], [True, False, True]]
+    assert table.Y == [True, False]
